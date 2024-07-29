@@ -3,8 +3,6 @@ import requests
 from bs4 import BeautifulSoup
 import schedule
 import time
-from linebot import LineBotApi
-from linebot.models import TextSendMessage
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -46,7 +44,7 @@ def check_website():
 
 def send_line_notification(message):
     # line_bot_api.push_message(USER_ID, TextSendMessage(text=message))
-    line_bot_api.broadcast(TextSendMessage(text=message))
+    send_line_notify(f'關鍵字 "{KEYWORD}" 出現在網頁中: {TARGET_URL}')
 
 check_website()
 # # 每小時執行一次 check_website 函數
